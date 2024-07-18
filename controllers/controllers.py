@@ -22,3 +22,17 @@ def listar_contas():
       tipo="PAGAR"
     )
   ]
+
+# @router.get("/", response_model=List[ContaPagarReceberResponse])
+# def listar_uma_conta(conta_id: int):
+#   for key, value in 
+#   if conta_id == id.ContaPagarReceberResponse:
+#     return [ContaPagarReceberResponse]
+#   else:
+#     raise ValueError("Item not found")
+
+@router.post("/", response_model=ContaPagarReceberResponse)
+def post_item(id: int, descricao: str, valor: Decimal, tipo: str):
+  if not id or not descricao or not valor or not tipo:
+    raise ValueError("Produto não sem nome ou preço")
+  return f'Item inserted successfully: {"id": id, "descricao": descricao, "valor": valor, "tipo": tipo}'
