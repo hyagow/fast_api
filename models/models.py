@@ -8,4 +8,7 @@ class ContaPagarReceberResponse(BaseModel):
   tipo: str
 
 
-# class ContaPagarReceberResponse(Contas): ...
+class ContaPagarReceberRequest(BaseModel):
+  descricao: str
+  valor: float | Decimal=Field(..., description="Valor da conta", example='100')
+  tipo: str
