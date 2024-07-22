@@ -4,11 +4,8 @@ from controllers import controllers
 
 
 
-app = FastAPI()
+app = FastAPI(title="ContasAPI", description="API para gerenciamento de contas")
 
-@app.get('/')
-def hello_world():
-  return 'Hello World'
 
 app.include_router(controllers.router)
 
