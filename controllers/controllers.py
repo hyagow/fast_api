@@ -34,3 +34,16 @@ def criar_conta(conta: ContaPagarReceberRequest) -> dict:
       }
     db_contas.append(new_conta)
   return new_conta
+
+@router.put("/conta/{id}", response_model=ContaPagarReceberRequest, status_code=200)
+def atualizar_conta(conta_id: int, conta_update: ContaPagarReceberRequest) -> dict:
+  for conta in db_contas:
+    if conta["id"] == conta_id:
+      conta["descricao"] = conta_update.descricao
+      conta["valor"] = conta_update.valor
+      conta["tipo"] = conta_update.tipo
+      return conta
+  else:
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                        detail=f'Conta do id: {conta_id}, não foi localizada.')
+
