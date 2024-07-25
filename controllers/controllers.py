@@ -47,3 +47,12 @@ def atualizar_conta(conta_id: int, conta_update: ContaPagarReceberRequest) -> di
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                         detail=f'Conta do id: {conta_id}, não foi localizada.')
 
+@router.delete("/conta/{id}", status_code=204)
+def deletar_conta(conta_id: int):
+  for conta in db_contas:
+    if conta["id"] == conta_id:
+      db_contas.remove(conta)
+      return print(f'Conta do id: {conta_id}, foi deletada.')
+  else:
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                        detail=f'Conta do id: {conta_id}, não foi localizada.')
