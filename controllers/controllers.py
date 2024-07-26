@@ -3,7 +3,7 @@ from models.models import ContaPagarReceberResponse, ContaPagarReceberRequest
 from typing import List
 
 
-router = APIRouter(prefix="/contas", tags=["Contas"])
+router = APIRouter(prefix="/contas_a_pagar_e_receber", tags=["Contas"])
 
 db_contas = [
   {"id": 1, "descricao": "Aluguel", "valor": 900, "tipo": "PAGAR"},
