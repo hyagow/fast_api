@@ -4,11 +4,11 @@ from decimal import Decimal
 class ContaPagarReceberResponse(BaseModel):
   id: int
   descricao: str
-  valor: float | Decimal=Field(..., description="Valor da conta", example='100.40')
+  valor: float | Decimal=Field(..., description="Valor da conta")
   tipo: str
 
 
 class ContaPagarReceberRequest(BaseModel):
   descricao: str
-  valor: float | Decimal=Field(..., description="Valor da conta", example='100')
+  valor: float | Decimal=Field(..., description="Valor da conta")
   tipo: str
