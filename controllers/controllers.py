@@ -10,10 +10,12 @@ db_contas = [
   {"id": 2, "descricao": "Curso", "valor": 800.20, "tipo": "PAGAR"},
 ]
 
+# Call all products
 @router.get("/", response_model=List[ContaPagarReceberResponse])
 def listar_contas() -> list:
   return db_contas
 
+# Call one product
 @router.get("/conta/{id}", response_model=ContaPagarReceberResponse, status_code=200)
 def listar_uma_conta(conta_id: int) -> dict:
   for conta in db_contas:
@@ -22,7 +24,8 @@ def listar_uma_conta(conta_id: int) -> dict:
   else:
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                         detail=f'Conta do id: {conta_id}, não foi localizada.')
-  
+
+# Create new product
 @router.post("/", response_model=ContaPagarReceberResponse, status_code=201)
 def criar_conta(conta: ContaPagarReceberRequest) -> dict:
   if conta:
@@ -35,6 +38,7 @@ def criar_conta(conta: ContaPagarReceberRequest) -> dict:
     db_contas.append(new_conta)
   return new_conta
 
+# Update one product
 @router.put("/conta/{id}", response_model=ContaPagarReceberRequest, status_code=200)
 def atualizar_conta(conta_id: int, conta_update: ContaPagarReceberRequest) -> dict:
   for conta in db_contas:
@@ -47,6 +51,7 @@ def atualizar_conta(conta_id: int, conta_update: ContaPagarReceberRequest) -> di
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                         detail=f'Conta do id: {conta_id}, não foi localizada.')
 
+# Delete product
 @router.delete("/conta/{id}", status_code=204)
 def deletar_conta(conta_id: int):
   for conta in db_contas:
@@ -57,6 +62,7 @@ def deletar_conta(conta_id: int):
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                         detail=f'Conta do id: {conta_id}, não foi localizada.')
   
+# Update product definitive 
 @router.patch("/conta/{id}", status_code=200)
 def atualizar_definitivamente_conta(conta_id: int, conta_update: ContaPagarReceberRequest) -> dict:
   for conta in db_contas:
