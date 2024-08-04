@@ -4,6 +4,7 @@ from main import app
 
 client = TestClient(app)
 
+# Test get all accounts
 def test_deve_listar_contas_a_pagar_e_receber():
   response = client.get('/contas_a_pagar_e_receber')
 
@@ -12,7 +13,8 @@ def test_deve_listar_contas_a_pagar_e_receber():
     {'id': 1, 'descricao': 'Aluguel', 'valor': '900', 'tipo': 'PAGAR'}, 
     {'id': 2, 'descricao': 'Curso', 'valor': 800.2, 'tipo': 'PAGAR'},
     ]
-  
+
+# Test creation account
 def test_deve_criar_conta_a_pagar_e_receber():
   nova_conta = {
     "descricao": "Curso de Python",
