@@ -21,5 +21,4 @@ O programa foi elaborado para testar os conceitos de CRUD, como CREATE, READ, UP
 Através deste projeto fiquei empolgado para elaborar mais programas utilizando a framework FastAPI pois ela da uma flexibilidade para o aumento da produtividade da elaboração de rotas que necessitam de uma atenção ainda maior.
 
 ## Participantes:
-Criador da lógica: [Hyago Wendel](https://github.com/hyagow)
-Criador do algoritmo: [Hyago Wendel](https://github.com/hyagow)
+Criador da lógica e do algoritmo: [Hyago Wendel](https://github.com/hyagow)
