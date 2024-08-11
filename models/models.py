@@ -17,6 +17,7 @@ class ContaPagarReceberRequest(BaseModel):
   valor: float | Decimal=Field(..., description="Valor da conta")
   tipo: str
 
+# Model to Conta in database
 class Contas(Base):
     __tablename__ = 'contas'
     id = Column(Integer, primary_key=True, index=True)
